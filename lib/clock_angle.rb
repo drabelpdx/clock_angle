@@ -6,15 +6,17 @@ class String
     hours_minutes.map!() do |index|
       index.to_i()
     end
-    hours_minutes[0] = hours_minutes[0].*(30)
-    hours_minutes[1] = hours_minutes[1].*(6)
-    if hours_minutes[0].eql?(360)
-      hours_minutes[0] = 0
+    hours = hours_minutes[0]
+    minutes = hours_minutes[1]
+    hour_degrees = hours.*(30)
+    minute_degrees = minutes.*(6)
+    if hour_degrees.eql?(360)
+      hour_degrees = 0
     end
-    if hours_minutes[0].>(hours_minutes[1])
-      angle = hours_minutes[0].-(hours_minutes[1])
-    elsif hours_minutes[1].>(hours_minutes[0])
-      angle = hours_minutes[1].-(hours_minutes[0])
+    if hour_degrees.>(minute_degrees)
+      angle = hour_degrees.-(minute_degrees).(minutes./(60)).*(30)
+    elsif minute_degrees.>(hour_degrees)
+      angle = minute_degrees.-(hour_degrees).(minutes./(60)).*(30)
     end
     angle
   end
